@@ -11,7 +11,8 @@ export function ContactForm() {
     return (
       <div className="text-center bg-white p-8 rounded-lg shadow-lg">
         <h3 className="text-2xl font-bold text-slate-800">Thank you!</h3>
-        <p className="text-slate-600 mt-2">Your message has been sent successfully. I'll get back to you soon.</p>
+        {/* Apostrophe theek kiya gaya */}
+        <p className="text-slate-600 mt-2">Your message has been sent successfully. I&apos;ll get back to you soon.</p>
       </div>
     );
   }
@@ -58,7 +59,6 @@ export function ContactForm() {
           id="contactNumber"
           type="tel" // 'tel' type mobile par numeric keypad kholta hai
           name="contactNumber"
-          // 'required' attribute nahi hai, isliye yeh optional hai
           className="mt-1 block w-full rounded-md border-slate-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm p-3"
         />
       </div>
@@ -72,7 +72,6 @@ export function ContactForm() {
           id="whatsappNumber"
           type="tel"
           name="whatsappNumber"
-          // 'required' attribute nahi hai, isliye yeh optional hai
           className="mt-1 block w-full rounded-md border-slate-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm p-3"
         />
       </div>

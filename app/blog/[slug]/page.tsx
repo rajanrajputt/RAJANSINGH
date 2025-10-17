@@ -4,21 +4,15 @@ import { getPostData, getAllPostSlugs } from '@/lib/posts';
 import { compileMDX } from 'next-mdx-remote/rsc';
 import { notFound } from 'next/navigation';
 
-// Page ke props ke liye type define kiya
-type PageProps = {
-  params: {
-    slug: string;
-  };
-};
-
-// Function ka return type a P se (explicitly) define kiya
-export async function generateStaticParams(): Promise<{ slug: string }[]> {
+// generateStaticParams se explicit return type hata diya gaya hai
+export async function generateStaticParams() {
   const slugs = await getAllPostSlugs();
+  // Next.js is smart enough to understand the return type here
   return slugs.map((slug) => ({ slug }));
 }
 
-// Page component mein naya type use kiya
-export default async function PostPage({ params }: PageProps) {
+// Page component mein custom PageProps type hata kar inline type use kiya hai
+export default async function PostPage({ params }: { params: { slug: string } }) {
   const { slug } = params;
   const post = await getPostData(slug);
   

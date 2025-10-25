@@ -10,8 +10,19 @@ type ProjectCardProps = {
 };
 
 export function ProjectCard({ title, description, tags, link }: ProjectCardProps) {
+  // Check karte hain ki link external hai ya internal
+  const isExternal = link.startsWith("http");
+
   return (
-    <Link href={link} target="_blank" rel="noopener noreferrer" className="cursor-pointer group">
+    // Link component par conditional attributes add kiye gaye hain
+    <Link 
+      href={link} 
+      // Agar link external hai, tabhi target="_blank" lagayenge
+      target={isExternal ? "_blank" : "_self"} 
+      // rel attribute bhi sirf external links ke liye zaroori hai
+      rel={isExternal ? "noopener noreferrer" : undefined} 
+      className="cursor-pointer group"
+    >
       <div 
         className="p-6 h-full border rounded-lg transition-all duration-300 
                    bg-white 
